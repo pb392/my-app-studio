@@ -1,20 +1,61 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="hero" aria-labelledby="hero-title">
-  <p class="eyebrow">A place to begin</p>
-  <h1 id="hero-title">{{ brand.headline }}</h1>
-  <p class="lede">{{ brand.summary }}</p>
-  {% if features.accounts %}<a class="button" href="/signup">Create your account <span aria-hidden="true">↗</span></a>
-  {% else %}<a class="button" href="#next">See the next step <span aria-hidden="true">↗</span></a>{% endif %}
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="tiny-star" aria-hidden="true">✦</span> Every player starts somewhere</p>
+    <h1 id="hero-title">{{ brand.headline }}</h1>
+    <p class="lede">{{ brand.summary }}</p>
+    <a class="button" href="#games">Find your first game <span aria-hidden="true">↗</span></a>
+    <p class="hero-note">No experience needed. Just a little curiosity.</p>
+  </div>
+  <figure class="hero-art">
+    <img src="/static/guide-landscape.png" width="3840" height="2160" fetchpriority="high" alt="Our blue-scarfed guide stands beside friendly creatures in a bright, snowy landscape.">
+    <figcaption><span aria-hidden="true">✦</span> A new world. A familiar guide.</figcaption>
+  </figure>
 </section>
-<section id="idea" class="two-column" aria-labelledby="idea-title">
-  <div><p class="eyebrow">The idea</p><h2 id="idea-title">Make the first impression count.</h2></div>
-  <div><p>{{ brand.promise if brand.promise != 'Not chosen yet' else 'Your audience, promise and visual choices will turn this neutral starter into your own project.' }}</p>
-  <p class="muted">The page you see is served by Python and FastAPI. It is a real starting point you can change and test.</p></div>
+<div class="intro-strip"><span>A beginner's field guide</span><span>Three games. Your own starting point.</span><span aria-hidden="true">01 — THE FIRST DRAW</span></div>
+<section id="games" class="games-section" aria-labelledby="games-title">
+  <div class="section-heading">
+    <div><p class="eyebrow">Choose a world</p><h2 id="games-title">What catches your curiosity?</h2></div>
+    <p>Start with the world that makes you want to play. You can explore the others whenever you're ready.</p>
+  </div>
+  <div class="game-grid">
+    <article class="game-card magic" aria-labelledby="magic-title">
+      <div class="game-visual" aria-hidden="true"><span class="game-index">01 / MAGIC</span><img class="game-logo" src="/static/magic-logo.png" width="257" height="86" loading="lazy" alt=""><span class="visual-caption">A world of possibilities</span></div>
+      <div class="game-body"><p class="eyebrow">Creatures · Spells · Fantasy</p><h3 id="magic-title">Magic: The Gathering</h3>
+        <p>Summon creatures and cast spells. Explore a game where the cards you choose help shape your way to play.</p>
+        <div class="first-step"><span>YOUR FIRST MOVE</span><p>Try the guided tutorial in <strong>MTG Arena</strong>, then learn what each part of a card means.</p></div>
+        <a class="text-link" href="https://magic.wizards.com/en/how-to-play">Learn with Magic's official guide <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+    <article class="game-card pokemon" aria-labelledby="pokemon-title">
+      <div class="game-visual" aria-hidden="true"><span class="game-index">02 / POKÉMON</span><img class="game-logo" src="/static/pokemon-tcg-logo.png" width="250" height="128" loading="lazy" alt=""><span class="visual-caption">Familiar faces. A new adventure.</span></div>
+      <div class="game-body"><p class="eyebrow">Pokémon · Energy · Trainers</p><h3 id="pokemon-title">Pokémon TCG</h3>
+        <p>Bring your curiosity about Pokémon to the tabletop. Start with a guided battle and discover how a turn fits together.</p>
+        <div class="first-step"><span>YOUR FIRST MOVE</span><p>Open the <strong>Learn tab in Pokémon TCG Live</strong>. Learning Lab offers lessons and practice against an AI opponent.</p></div>
+        <a class="text-link" href="https://support.pokemon.com/hc/en-us/articles/45562128423444-Pok%C3%A9mon-TCG-Live-Learning-Lab-FAQ">Explore the official Learning Lab <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+    <article class="game-card elestrals" aria-labelledby="elestrals-title">
+      <div class="game-visual" aria-hidden="true"><span class="game-index">03 / ELESTRALS</span><img class="game-logo" src="/static/elestrals-logo.png" width="1948" height="556" loading="lazy" alt=""><span class="visual-caption">Meet your next companion</span></div>
+      <div class="game-body"><p class="eyebrow">Mythology · Creatures · Discovery</p><h3 id="elestrals-title">Elestrals</h3>
+        <p>Enter a mythical world of Elestrals, Spirits and Runes. Get to know the creatures before choosing where to begin.</p>
+        <div class="first-step"><span>YOUR FIRST MOVE</span><p>Follow the <strong>official Learn to Play video</strong>. For a tabletop start, explore the <a href="https://www.shopelestrals.com/collections/starter-decks">starter decks</a> with a friend.</p></div>
+        <a class="text-link" href="https://www.youtube.com/watch?v=ONlBgqp5HHo">Watch Elestrals' official tutorial <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+  </div>
 </section>
-<section id="next" class="panel" aria-labelledby="next-title">
-  <p class="eyebrow">One useful step at a time</p>
-  {% if features.accounts %}<h2 id="next-title">Your own space starts here.</h2><p>Make an account, sign in, and see how the server protects your member space.</p><a class="text-link" href="/signup">Join {{ brand.name }} →</a>
-  {% else %}<h2 id="next-title">First a brand. Then a place to belong.</h2><p>This starter has no accounts yet. Give the homepage its purpose first; signup and login are the next lesson.</p>{% endif %}
+<section id="start" class="start-section" aria-labelledby="start-title">
+  <div class="start-intro"><p class="eyebrow">From curious to playing</p><h2 id="start-title">You don't need to know everything to take a turn.</h2><p>Your first game is a chance to learn. Give yourself room to ask questions, read the cards and try again.</p><a class="text-link" href="#games">Pick a starting point <span aria-hidden="true">↑</span></a></div>
+  <ol class="steps">
+    <li><span class="step-number" aria-hidden="true">01</span><div><h3>Follow your curiosity</h3><p>Choose a game whose art, creatures or world interests you. Use its official tutorial to see a turn in action.</p></div></li>
+    <li><span class="step-number" aria-hidden="true">02</span><div><h3>Learn with a deck that's ready</h3><p>Try a tutorial deck, borrow a deck, or ask for a beginner demo. Save building your own deck for after you know the basics.</p></div></li>
+    <li><span class="step-number" aria-hidden="true">03</span><div><h3>Make the first game a practice game</h3><p>Play slowly with someone happy to explain. Read unfamiliar cards together and focus on one new thing each turn.</p></div></li>
+  </ol>
+</section>
+<section id="guide" class="guide-section" aria-labelledby="guide-title">
+  <div class="guide-emblem" aria-hidden="true"><img src="/static/logo.svg" width="80" height="80" alt=""></div>
+  <div><p class="eyebrow">A little guidance goes a long way</p><h2 id="guide-title">A friendly face for your first adventure.</h2><p>First Draw brings a welcoming guide to a hobby full of unfamiliar names and possibilities. Start small, follow the creatures that catch your eye, and let your confidence grow one game at a time.</p><p class="muted">Deck building and deeper strategy can come later. Today, your next step is simply to begin.</p></div>
 </section>
 {% endblock %}

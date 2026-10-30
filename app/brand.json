@@ -1,16 +1,16 @@
 {
-  "name": "Your Project",
-  "audience": "Not chosen yet",
-  "archetype": "Not chosen yet",
-  "promise": "Not chosen yet",
-  "headline": "A small idea. A real application.",
-  "summary": "This working page is your starting point. Give it a purpose and a brand, then build accounts and permissions one feature at a time.",
-  "voice": ["Not chosen yet"],
-  "design_direction": "Not chosen yet",
+  "name": "First Draw",
+  "audience": "New players comparing Magic: The Gathering, Pokémon TCG and Elestrals and choosing a friendly first step.",
+  "archetype": "Sage — a welcoming, patient guide",
+  "promise": "Find your game. Make your first move.",
+  "headline": "Find your game. Make your first move.",
+  "summary": "Curious about trading card games? Explore three worlds, learn where to begin, and take your first turn with a little guidance.",
+  "voice": ["Welcoming", "Clear", "Curious", "Patient"],
+  "design_direction": "An illustrated field guide: snowy white space, deep navy type and cyan details. The learner's character welcomes newcomers; clear first steps take priority over competitive jargon.",
   "palette": {
-    "ink": "#182C34",
-    "paper": "#F6F5EF",
-    "accent": "#285A50",
+    "ink": "#172C48",
+    "paper": "#F5F8FA",
+    "accent": "#155C87",
     "surface": "#FFFFFF"
   }
 }

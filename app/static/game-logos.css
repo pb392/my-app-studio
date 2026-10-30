@@ -1,0 +1,4 @@
+/* Game identity artwork, kept separate from the shared site styles. */
+.game-visual::before, .game-visual::after { display: none; }
+.game-logo { display: block; align-self: center; width: min(100%, 257px); height: 96px; object-fit: contain; }
+.magic .game-visual { background: #29384e; color: #ffffff; }
