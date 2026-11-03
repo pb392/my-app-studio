@@ -31,3 +31,7 @@ nav .account-nav { color: var(--accent); font-weight: 750; }
 .member-guide-link:hover strong { color: var(--accent); text-decoration: underline; }
 @media (max-width: 900px) { .account-layout { gap: 28px; } .account-panel { padding: 28px; } .member-layout { grid-template-columns: 1fr 1.5fr; } }
 @media (max-width: 700px) { .account-layout { grid-template-columns: 1fr; padding-block: 32px; } .account-panel { grid-row: 1; padding: 24px; } .account-welcome { padding-top: 8px; } .account-panel h1 { font-size: 2.3rem; } .member-heading { align-items: flex-start; flex-direction: column; padding-top: 36px; } .member-layout { grid-template-columns: 1fr; } .profile-panel, .member-guides { padding: 24px; } }
+.role-panel { max-width: 780px; margin: 60px auto; padding: clamp(24px, 5vw, 48px); }
+.role-panel h1 { max-width: 16ch; font-size: clamp(2.2rem, 6vw, 3.5rem); }
+.role-panel .lede { max-width: none; }
+.role-home { margin-top: 24px; margin-bottom: 0; }

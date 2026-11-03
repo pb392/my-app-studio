@@ -161,6 +161,10 @@ def _check_role_boundary(page, server, username):
     expect(
         page.get_by_role("heading", name="Admin access required", exact=True)
     ).to_be_visible()
+    page.set_viewport_size({"width": 390, "height": 844})
+    assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+    page.get_by_role("link", name="Return to homepage", exact=True).click()
+    expect(page.get_by_role("link", name="Admin", exact=True)).to_have_count(0)
     for role, status in (("admin", 200), ("member", 403)):
         subprocess.run(
             [sys.executable, "studio.py", "user", "role", username, "--role", role],
@@ -176,6 +180,16 @@ def _check_role_boundary(page, server, username):
             expect(
                 page.get_by_role("heading", name="Administration", exact=True)
             ).to_be_visible()
+            expect(page.get_by_role("link", name="Admin", exact=True)).to_be_visible()
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        else:
+            page.goto(server.url + "/admin")
+            expect(
+                page.get_by_role("heading", name="Admin access required", exact=True)
+            ).to_be_visible()
+            expect(page.get_by_role("link", name="Admin", exact=True)).to_have_count(0)
+            page.get_by_role("link", name="Return to homepage", exact=True).click()
+            expect(page.get_by_role("heading", level=1)).to_be_visible()
 
 
 @pytest.mark.skipif(LEVEL < 2, reason="Account pages belong to APP-002.")
