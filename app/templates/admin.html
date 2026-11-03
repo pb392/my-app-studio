@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Administration' if allowed else 'Admin access required' }} · {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="panel role-panel" aria-labelledby="role-title">
+  <p class="eyebrow">First Draw · {{ 'Admin space' if allowed else 'Restricted page' }}</p>
+  {% if allowed %}
+  <h1 id="role-title">Administration</h1>
+  <p class="lede">Welcome to the First Draw admin space.</p>
+  <p>Your account has admin access. You can also visit your member dashboard and explore the beginner guides.</p>
+  <a class="button" href="/dashboard">My dashboard <span aria-hidden="true">↗</span></a>
+  <p class="role-home"><a href="/">Return to homepage</a></p>
+  {% else %}
+  <h1 id="role-title">Admin access required</h1>
+  <p class="notice">Your member account does not have access to this page.</p>
+  <a class="button" href="/">Return to homepage <span aria-hidden="true">↗</span></a>
+  <p class="muted role-home">You can still use your <a href="/dashboard">member dashboard</a> and all the beginner guides.</p>
+  {% endif %}
+</section>
+{% endblock %}
