@@ -176,3 +176,33 @@ def _check_role_boundary(page, server, username):
             expect(
                 page.get_by_role("heading", name="Administration", exact=True)
             ).to_be_visible()
+
+
+@pytest.mark.skipif(LEVEL < 2, reason="Account pages belong to APP-002.")
+def test_account_pages_fit_a_phone_and_navigation_tracks_session(page, server):
+    """Exercise the new forms and long-username profile at a real phone width."""
+    page.set_viewport_size({"width": 390, "height": 844})
+    username = "member_" + uuid.uuid4().hex[:25]
+    for route in ("/signup", "/login"):
+        page.goto(server.url + route)
+        expect(page.get_by_label("Username", exact=True)).to_be_visible()
+        assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        assert (
+            page.get_by_role("button").evaluate(
+                "element => element.getBoundingClientRect().height"
+            )
+            >= 44
+        )
+    page.goto(server.url + "/signup")
+    page.get_by_label("Username", exact=True).fill(username)
+    page.get_by_label("Password", exact=True).fill("a disposable mobile test password")
+    page.get_by_role("button", name="Create account", exact=True).click()
+    expect(page.get_by_role("heading", name="Log in", exact=True)).to_be_visible()
+    page.get_by_label("Username", exact=True).fill(username)
+    page.get_by_label("Password", exact=True).fill("a disposable mobile test password")
+    page.get_by_role("button", name="Log in", exact=True).click()
+    expect(page.get_by_role("heading", name="Your member space")).to_be_visible()
+    expect(page.get_by_role("link", name="My dashboard", exact=True)).to_be_visible()
+    assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+    page.get_by_role("button", name="Log out", exact=True).click()
+    expect(page.get_by_role("link", name="Sign in", exact=True)).to_be_visible()
