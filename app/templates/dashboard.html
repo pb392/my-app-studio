@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}My dashboard · {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="member-heading" aria-labelledby="dashboard-title">
+  <div><p class="eyebrow">First Draw · Members</p><h1 id="dashboard-title">Your member space</h1><p class="lede">Welcome, <strong>{{ user.username }}</strong>. Pick a world and take your next step.</p></div>
+  <form action="/logout" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="button button-secondary" type="submit">Log out</button></form>
+</section>
+{% if error %}<p class="account-error" role="alert">{{ error }}</p>{% endif %}
+<div class="member-layout">
+  <section class="profile-panel" aria-labelledby="profile-title">
+    <span class="profile-avatar" aria-hidden="true">{{ user.username[0] | upper }}</span>
+    <p class="eyebrow">Your profile</p><h2 id="profile-title">{{ user.username }}</h2>
+    <dl><dt>Account type</dt><dd>{{ user.role | capitalize }}</dd></dl>
+    <p class="muted">You're signed in. This space is available while your account session is active.</p>
+  </section>
+  <section class="member-guides" aria-labelledby="member-guides-title">
+    <p class="eyebrow">Keep exploring</p><h2 id="member-guides-title">Where will you start?</h2>
+    <p class="muted">Return to a beginner guide and choose one small thing to try.</p>
+    <a class="member-guide-link" href="/#magic-title"><span><strong>Magic: The Gathering</strong><small>Creatures, spells and possibilities</small></span><span aria-hidden="true">↗</span></a>
+    <a class="member-guide-link" href="/#pokemon-title"><span><strong>Pokémon TCG</strong><small>Familiar faces, a new adventure</small></span><span aria-hidden="true">↗</span></a>
+    <a class="member-guide-link" href="/#elestrals-title"><span><strong>Elestrals</strong><small>Discover your next companion</small></span><span aria-hidden="true">↗</span></a>
+  </section>
+</div>
+{% endblock %}

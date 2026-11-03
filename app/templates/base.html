@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/brand.css">
   <link rel="stylesheet" href="/static/site.css">
   <link rel="stylesheet" href="/static/game-logos.css">
+  {% if features.accounts %}<link rel="stylesheet" href="/static/accounts.css">{% endif %}
   {% if request.app.state.live_reload %}<script src="/static/live.js" defer></script>{% endif %}
 </head>
 <body>
@@ -22,8 +23,8 @@
       <a href="/#games">Explore games</a>
       <a href="/#start">Getting started</a>
       {% if features.accounts %}
-        <a href="/dashboard">Member space</a>
-        {% if not current_user %}<a href="/login">Log in</a>{% endif %}
+        {% if current_user %}<a class="account-nav" href="/dashboard">My dashboard</a>
+        {% else %}<a class="account-nav" href="/login">Sign in</a>{% endif %}
       {% else %}<a href="/#guide">Your guide</a>{% endif %}
       {% if features.roles and current_user and current_user.role == "admin" %}<a href="/admin">Admin</a>{% endif %}
     </nav>
