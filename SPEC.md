@@ -7,9 +7,9 @@ actual evidence; pending is a valid state. Keep explanations/help in
 ## Current stage
 
 - **Current feature:** APP-001.
-- **Status:** Neutral foundation; learner scope and decisions pending.
-- **Next step:** Confirm the local clone and SSH origin, run setup and try the page.
-- **Implementation marker:** `studio.json` starts at `implemented_through: 0`.
+- **Status:** First Draw homepage built locally. Full cumulative APP-001 checks passed in the learner terminal, with a matching local receipt verified by AI. AI desktop/narrow review passed. Learner interpretation and browser observation are recorded; the learner chose to keep the revised official-logo design because it is easy to follow and navigate. The final normal full check passed with a matching receipt. The learner approved the learning summary for publication. PR #2 is open; latest GitHub CI and merge remain pending.
+- **Next step:** Review the latest PR check/windows jobs, then ask the learner to decide whether to merge.
+- **Implementation marker:** `studio.json` now declares `implemented_through: 1`, advanced only after the explicit full APP-001 check passed. The normal full check after this marker change and the logo revision passed.
 
 This repository owns application code. Server/proxy changes and production
 deployment are outside these three local-development lessons. Prepared helpers
@@ -23,10 +23,11 @@ Keep account actions honest about their unfinished state.
 
 | Decision | Agreement |
 |---|---|
-| Visitor and concrete use situation | Pending |
-| Reused IS117 brand, or name / promise / primary archetype | Pending |
-| One visible choice and visitor benefit | Pending |
-| Own issue / branch / PR | Pending |
+| Visitor and concrete use situation | A newcomer comparing Magic: The Gathering, Pokémon TCG and Elestrals and looking for an approachable way to start playing. |
+| Reused IS117 brand, or name / promise / primary archetype | Name: **First Draw**. Beginner-oriented name selected by the learner; XenoSHIN TCG is their username. AI-drafted promise: **Find your game. Make your first move.** AI-proposed archetype: **Sage**, expressed as a welcoming, patient guide. These AI-supplied choices implement the learner's friendly-guide direction; the learner subsequently chose to keep the revised design. |
+| One visible choice and visitor benefit | Lead with the light snowy illustration and approachable first steps. The learner predicts the character will feel welcoming to beginners; dramatic creature/strategy content is a later direction. Navy, cyan and light surfaces support this direction. |
+| Supplied character artwork | The learner asked to use their existing character and supplied four illustrations. The light snowy landscape is reused unchanged as `app/static/guide-landscape.png`, framed responsively with CSS. The original asset is approximately 12 MB; web image optimization remains a performance improvement before any future deployment. The other three illustrations remain private local references. |
+| Own issue / branch / PR | [APP-001 issue #1](https://github.com/pb392/my-app-studio/issues/1); `app-001-first-draw`; [PR #2](https://github.com/pb392/my-app-studio/pull/2). |
 
 **Keep when:** the agreed identity is visible and usable at desktop/narrow widths;
 full foundation + APP-001 checks pass; AI review and the learner's actual check
@@ -81,9 +82,33 @@ customer research or claims that a timestamp proves learning.
 
 | Feature | Files / own issue / PR | Actual checks and learner observations | Kept / GitHub state |
 |---|---|---|---|
-| APP-001 | Pending | Not run; learner contributions pending | Pending |
+| APP-001 | [Issue #1](https://github.com/pb392/my-app-studio/issues/1); `app/brand.json`, `app/templates/base.html`, `app/templates/home.html`, `app/static/site.css`, original `logo.svg`, supplied `guide-landscape.png` | Foundation-only baseline full check previously passed in learner terminal (98 tests + 2 Chromium). Current APP-001 fast check passed Black, Pylint, 98 foundation tests + 2 homepage contracts; Chromium omitted. AI inspected desktop 1440×1000 and mobile 390×844, loaded artwork, game anchor navigation, no missing local anchors, mobile page width 390px and primary action height 52.28px. Full APP-001 check subsequently passed in learner terminal: Black, Pylint, 98 foundation tests, 2 homepage contracts and 2 actual Chromium journeys, observed 2026-10-30T14:25:00.759721+00:00. AI verified the local receipt matched source fingerprint `db374371df5a531d90881adef6e79ce1fb57bee4f6fda22a475e61ed041e1649` before advancing the marker. Final normal full check after the marker change and logo revision passed at 2026-10-30T18:12:32.366765+00:00: Black, Pylint, 98 foundation tests, 2 homepage contracts and 2 Chromium journeys. AI verified source fingerprint `0debcb49119eb6b68949a087caf394861d539711d7b6db14cd4220aa9c052310`. Learner observed the generic symbols, requested a revision, and kept the official-logo result for ease of navigation. | Learner kept the design and approved the learning summary. [PR #2](https://github.com/pb392/my-app-studio/pull/2) open; GitHub CI and merge pending. |
 | APP-002 | Pending | Unfinished; explicit contracts not yet passed | Pending |
 | APP-003 | Pending | Unfinished; explicit contracts not yet passed | Pending |
 
 The instructor's reference branches show possible implementations. They do not
 establish this repository's completion or the learner's own reasoning.
+
+## APP-001 content and review notes
+
+Official resources inspected on October 30, 2026; the short starter guidance is AI-drafted, not learner research:
+
+- [Magic: official how-to-play guide](https://magic.wizards.com/en/how-to-play).
+- [Pokémon TCG Live Learning Lab FAQ](https://support.pokemon.com/hc/en-us/articles/45562128423444-Pok%C3%A9mon-TCG-Live-Learning-Lab-FAQ).
+- [Elestrals official site](https://www.elestrals.com/) links its Learn to Play video at `https://www.youtube.com/watch?v=ONlBgqp5HHo`; the site link was verified, video playback was not. [Official starter decks](https://www.shopelestrals.com/collections/starter-decks) are linked without price or availability claims.
+
+AI reviewed the changes against APP-001: semantic headings, shared brand tokens, original card mark, image alternative text, visible focus styles and reduced-motion support. No account routes, security helpers, dependencies or server settings changed. Prepared checks were preserved. Browser review supplements, and does not replace, the required Chromium suite or learner observations. Screenshots are saved locally outside Git pending learner review.
+
+### Game-card revision
+
+The learner requested each game's logo or an iconic character after observing generic symbols. AI selected the logo option and replaced the generic symbols with unchanged official PNG assets, displayed proportionally. Matching adjacent game headings provide accessible identification, so duplicate decorative logo images have empty alternative text. The learner chose to keep this revision because it is easy to follow and navigate. Full checks of this revision passed, and the learner approved the learning summary for publication.
+
+Asset provenance (retrieved October 30, 2026):
+
+- `app/static/magic-logo.png`: [official Magic site](https://magic.wizards.com/en), [image](https://images.ctfassets.net/s5n2t79q9icq/3dB5uyWzUH95O1ZPBNNUX5/6cff7c65a809285755ea24b164b6ac65/magic-logo.png).
+- `app/static/pokemon-tcg-logo.png`: [official Pokémon TCG image](https://tcg.pokemon.com/assets/img/global/logos/en-us/tcg-logo-2x.png).
+- `app/static/elestrals-logo.png`: [official Elestrals store](https://www.shopelestrals.com/collections/starter-decks), [image](https://www.shopelestrals.com/cdn/shop/files/Official-Elestrals-Logo-Colored_0f255c66-ebd6-4ba2-a375-f8e1d2f06d14.png?v=1731089794&width=1948).
+
+These are third-party game logos, not original First Draw artwork; the original First Draw SVG mark remains separate.
+
+Revision verification: the first fast check passed; a later rerun caught that the stylesheet query version conflicted with the prepared foundation requirement for the original CSS URL. The original URL was restored and logo-specific styles moved to a separate local stylesheet; the final fast rerun passed Black, Pylint, all 98 foundation tests and both APP-001 contracts without changing any test. Browser inspection confirmed all three official logo files loaded, proportional `object-fit: contain` rendering and 390px document width at a 390px viewport. A dark Magic panel preserves contrast with its white wordmark. A separate `game-logos.css` handles the logo presentation, including compatibility with a previously cached shared stylesheet. The full normal rerun subsequently passed, including actual Chromium, as recorded in the evidence table.
